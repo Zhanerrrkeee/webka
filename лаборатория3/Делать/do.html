@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<head>
+    <title>ToDo List</title>
+</head>
+<style>
+* {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.header {
+    background-color: black;
+    color: rgb(231, 228, 224);
+    font-size: 18px;
+    height: 45px;
+    padding-top: 20px;
+    padding-left: 40px;
+}
+
+h1 {
+    margin-left: -80px;
+}
+
+.main {
+    margin-left: 30%;
+    /*по середине экрана устанавливает*/
+    margin-top: 50px;
+}
+
+.box {
+    margin-top: 25px;
+}
+
+.button-del {
+    width: 15px;
+    height: 20px;
+    float: right;
+}
+
+.button-del {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #fff;
+}
+
+.box {
+    margin-top: 25px;
+}
+
+.input {
+    width: 50%;
+    height: 30px;
+    padding-left: 25px;
+    border: 1px solid rgb(219, 218, 216);
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.button {
+    background-color: #4080ff;
+    height: 31px;
+    width: 60px;
+    color: azure;
+    border: 1px solid;
+    border-radius: 3px;
+    margin-left: 19px;
+}
+
+.events {
+    margin: 40px 0px 0px -80px;
+}
+
+.tasks {
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    padding: 25px;
+    width: 55%;
+    padding-left: 60px;
+    height: 30px;
+}
+
+.first-task {
+    border: 1px solid #cacece;
+    display: inline;
+    margin: 0px 30px 0px 0px;
+    position: relative;
+}
+
+.first-task:checked+span {
+    text-decoration: line-through;
+}
+
+.new-tasks {
+    border: none;
+    display: inline-block;
+    width: 85%;
+    padding-left: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-decoration: none;
+}
+
+</style>
+
+<body>
+    <div class="header">
+        <h3>ToDo List</h3>
+    </div>
+    <div class="main">
+        <h1>ToDo List</h1>
+        <div class="box">
+            <input type="text" class="input" placeholder="New Task">
+            <button class="button" onclick="addTask()">Add</button>
+
+        </div>
+        <div class="events">
+            <div class="tasks">
+                <label class="new-tasks">
+                    <input type="checkbox" class="first-task">
+        
+                    <span>WEB Lab 3 </span></label>
+                </label>
+
+                <img class="button-del" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAilBMVEX/AAD/////oKD/MzP/CQn//Pz/6en/wMD/urr/tbX/BAT/RUX/rKz/YWH/QUH/ior/8fH/pqb/qqr/9fX/3d3/1dX/eHj/Z2f/cXH/Gxv/8/P/sbH/zMz/FRX/gYH/mpr/lZX/KCj/UlL/yMj/Ojr/TU3/JCT/a2v/RET/hob/XFz/4eH/WFj/Ly/KNXz8AAAEx0lEQVR4nO3d21riMBQF4BRoFTkVSpGTgFLFEXn/1xsOMwgNO0mbNklxres9mfxaW5qEbzOvkPhxu1ZsBvOomKmxAsaIHjusjLzXwgJmV4Bw+VGK75iFvlFbGJfoO2RmW7gs17fPxrcqHJUOZKyrR9QTmgDuifaENSNAxp5tCWNDQMYGloSJMSHTeGhoCGfmgGxsRfhkUKjxS8wvXJsEspUF4diosG5B+GpUyIbGhUOzQPZoXDg3LOwZF7YNC3M/Lyoj3Ny9sAMhhBBmFja6rSz5nFRM2BtOfc/PkiioCT8luSUc5VxZ6VdF2Mw7puijoEvCdt4hPRHRIaHG6/g+gwoINdfhu84L9X6F9OqPO8KHvAP+S+i8MMg74HlGrgvzjnfO590LiVsNhGQgJANh7kCYNRCSgTB3IMwaCMncv7BZlrB1e9zcJ06IGT0u6qwhDiGU/Ct5iHElAz9Nxu3bxzVvCvtGDyEUlz9TNWFIXCcVyMdcRRjYnqZW+M1wThjKNhAcTywVbmxPUTOv6R2FtNDcabyy0pcIn21PUD9ioW97egVkLhSaPaxWTvpCoem96zIiFor2KKuS3y6k3hiqFLHQ9InDMtIWCr0X2/PTTyAWrmzPTzvvnlhIbVBWJ+kXKO6TN3lUoCLhdtn590Mz32UqK/zXwG6845s9hF9sEv401q11mupeqKMbmpsrUWGvii/6jc32FoZYTfTjWe9fFLBvo97iS2kWh8qO0jP3WEkuLf7k/zT7c+KoknwFty77P5anR2zYls68d5pE1JdWrk5jTpvSSun8tYXJz0cIX/x7rF9UipcSdsqVBoStq4Vm0ZPm+j4uqkyuxlzYFb6kLn7q3B3jTvTRlY3UB8t3q8L011fppbp0Jf0WU1OuNCHkqqkdgQn3KKb+aBtc5bdFIf+EpRZ61Cv5bTTha3nJQv7AM3WZptdp6YuPH3NrUcgfJqX2dfjT7dS8+b0V4SKuw8KA2KSEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEUElItKu6HyHVo8QtId9bhWqZvOQqqX4t6VZBnje3KPziqldEJd8fZ0lUprtsel7NopBN09WvVCXX9y2hKgPlMU0IF6liuut1uh0S3eJIvdKEMNXXlLo/HrK+rhSMeX3/CsTt80oXsviiNCSvvHRlJBz18scWUl3AjAnZ7FwpvOexy9Zrc0nbyJ97dCxrgGhAyJJZGHl++CBsj3bMrnmsXL9JK5PBqbIjrTQhPEy9Jbw+y6w0JLQYCCH8FcKdbYM4BQjlt3arKUDodq/1SQFC6i3HjfBvZdmFdANcF8K/WWcXRkqNwm1lWIDQ6T/EhGsenEfo8mXKLxTlEYp7KlvNJJLPXkUoboxtM3x35HxCr2dbQqSlMnklIdlP3HK49bv8wtDJj9+xfOLKQieJakBVoRe5dqG+bBVnriqUrK0bz1j+qM8s9IKxbdY534pXaEah521XXdu2fXaLDL6Mwn2m60HNZvoPgfL1ecpfsDef7iumWj0AAAAASUVORK5CYII="></img>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+let tasks = document.querySelector('.events');
+let inputText = document.querySelector('.input');
+let addButton = document.querySelector('.button');
+
+let task = document.querySelectorAll('.tasks');
+let deleteImage = document.querySelectorAll('.button-del');
+
+function addTask() {
+    if (inputText.value != null) {
+        let div = document.createElement("div");
+        div.className = "tasks";
+
+        let label = document.createElement("label");
+        label.className = "new-tasks";
+
+        let check = document.createElement("input");
+        check.type = "checkbox";
+        check.className = "first-task";
+
+        let span = document.createElement("span");
+        span.innerHTML = inputText.value;
+
+        let image = document.createElement("img");
+        image.className = "button-del";
+        image.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAilBMVEX/AAD/////oKD/MzP/CQn//Pz/6en/wMD/urr/tbX/BAT/RUX/rKz/YWH/QUH/ior/8fH/pqb/qqr/9fX/3d3/1dX/eHj/Z2f/cXH/Gxv/8/P/sbH/zMz/FRX/gYH/mpr/lZX/KCj/UlL/yMj/Ojr/TU3/JCT/a2v/RET/hob/XFz/4eH/WFj/Ly/KNXz8AAAEx0lEQVR4nO3d21riMBQF4BRoFTkVSpGTgFLFEXn/1xsOMwgNO0mbNklxres9mfxaW5qEbzOvkPhxu1ZsBvOomKmxAsaIHjusjLzXwgJmV4Bw+VGK75iFvlFbGJfoO2RmW7gs17fPxrcqHJUOZKyrR9QTmgDuifaENSNAxp5tCWNDQMYGloSJMSHTeGhoCGfmgGxsRfhkUKjxS8wvXJsEspUF4diosG5B+GpUyIbGhUOzQPZoXDg3LOwZF7YNC3M/Lyoj3Ny9sAMhhBBmFja6rSz5nFRM2BtOfc/PkiioCT8luSUc5VxZ6VdF2Mw7puijoEvCdt4hPRHRIaHG6/g+gwoINdfhu84L9X6F9OqPO8KHvAP+S+i8MMg74HlGrgvzjnfO590LiVsNhGQgJANh7kCYNRCSgTB3IMwaCMncv7BZlrB1e9zcJ06IGT0u6qwhDiGU/Ct5iHElAz9Nxu3bxzVvCvtGDyEUlz9TNWFIXCcVyMdcRRjYnqZW+M1wThjKNhAcTywVbmxPUTOv6R2FtNDcabyy0pcIn21PUD9ioW97egVkLhSaPaxWTvpCoem96zIiFor2KKuS3y6k3hiqFLHQ9InDMtIWCr0X2/PTTyAWrmzPTzvvnlhIbVBWJ+kXKO6TN3lUoCLhdtn590Mz32UqK/zXwG6845s9hF9sEv401q11mupeqKMbmpsrUWGvii/6jc32FoZYTfTjWe9fFLBvo97iS2kWh8qO0jP3WEkuLf7k/zT7c+KoknwFty77P5anR2zYls68d5pE1JdWrk5jTpvSSun8tYXJz0cIX/x7rF9UipcSdsqVBoStq4Vm0ZPm+j4uqkyuxlzYFb6kLn7q3B3jTvTRlY3UB8t3q8L011fppbp0Jf0WU1OuNCHkqqkdgQn3KKb+aBtc5bdFIf+EpRZ61Cv5bTTha3nJQv7AM3WZptdp6YuPH3NrUcgfJqX2dfjT7dS8+b0V4SKuw8KA2KSEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEUElItKu6HyHVo8QtId9bhWqZvOQqqX4t6VZBnje3KPziqldEJd8fZ0lUprtsel7NopBN09WvVCXX9y2hKgPlMU0IF6liuut1uh0S3eJIvdKEMNXXlLo/HrK+rhSMeX3/CsTt80oXsviiNCSvvHRlJBz18scWUl3AjAnZ7FwpvOexy9Zrc0nbyJ97dCxrgGhAyJJZGHl++CBsj3bMrnmsXL9JK5PBqbIjrTQhPEy9Jbw+y6w0JLQYCCH8FcKdbYM4BQjlt3arKUDodq/1SQFC6i3HjfBvZdmFdANcF8K/WWcXRkqNwm1lWIDQ6T/EhGsenEfo8mXKLxTlEYp7KlvNJJLPXkUoboxtM3x35HxCr2dbQqSlMnklIdlP3HK49bv8wtDJj9+xfOLKQieJakBVoRe5dqG+bBVnriqUrK0bz1j+qM8s9IKxbdY534pXaEah521XXdu2fXaLDL6Mwn2m60HNZvoPgfL1ecpfsDef7iumWj0AAAAASUVORK5CYII=";
+        image.addEventListener('click', remove);
+
+        tasks.appendChild(div);
+        div.appendChild(label);
+        label.appendChild(check);
+        label.appendChild(span);
+        div.appendChild(image);
+
+        inputText.value = null;
+    }
+}
+
+function remove() {
+    this.parentNode.remove();
+}
+
+function clearAll() {
+    deleteImage[0].addEventListener('click', remove);
+}
+
+clearAll();
+</script>
+
+</html>
