@@ -6,9 +6,9 @@
     <app-product-item [product]="product" ></app-product-item>
 </div>
 
-<mat-card>
-  <mat-card-content>my products</mat-card-content>
-</mat-card>
+< img mat-card-img>
+  <img mat-card-sm-image>my products</mat-card-sm-image>
+</mat-card-img>
 
 
 <div *ngFor="let product of products" class="div_cont">
