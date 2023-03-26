@@ -11,4 +11,4 @@ def last2(str):
     if sub == last2:
       count = count + 1
 
-  return 
+  return count
